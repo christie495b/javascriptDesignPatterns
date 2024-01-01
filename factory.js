@@ -1,5 +1,3 @@
-// refactor to use factory pattern
-
 const Factory =  () => {
     this.createEmployee = (type) => {
         let employee;
