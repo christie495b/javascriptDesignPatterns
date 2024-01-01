@@ -1,6 +1,8 @@
-var Factory = function () {
-    this.createEmployee = function (type) {
-        var employee;
+// refactor to use factory pattern
+
+const Factory =  () => {
+    this.createEmployee = (type) => {
+        let employee;
 
         if (type === "fulltime") {
             employee = new FullTime();
@@ -14,7 +16,7 @@ var Factory = function () {
 
         employee.type = type;
 
-        employee.say = function () {
+        employee.say = () => {
             console.log(this.type + ": rate " + this.hourly + "/hour");
         }
 
@@ -22,33 +24,35 @@ var Factory = function () {
     }
 }
 
-var FullTime = function () {
+const FullTime = () => {
     this.hourly = "$12";
 };
 
-var PartTime = function () {
+const PartTime = () => {
     this.hourly = "$11";
 };
 
-var Temporary = function () {
+const Temporary = () => {
     this.hourly = "$10";
 };
 
-var Contractor = function () {
+const Contractor = () => {
     this.hourly = "$15";
 };
 
-function run() {
+const run = () => {
 
-    var employees = [];
-    var factory = new Factory();
+    const employees = [];
+    const factory = new Factory();
 
     employees.push(factory.createEmployee("fulltime"));
     employees.push(factory.createEmployee("parttime"));
     employees.push(factory.createEmployee("temporary"));
     employees.push(factory.createEmployee("contractor"));
 
-    for (var i = 0, len = employees.length; i < len; i++) {
+    for (let i = 0, len = employees.length; i < len; i++) {
         employees[i].say();
     }
 }
+
+// run();
